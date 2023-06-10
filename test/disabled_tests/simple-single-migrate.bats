@@ -21,7 +21,7 @@ echo_lines() {
 @test "Start Old ${service_name}" {
   run run_hook "simple-single-old" "start" "$(payload start)"
   echo_lines
-  docker exec "simple-single-old" tail -n 100 /var/log/gonano/db/current
+  docker exec "simple-single-old" tail -n 100 /var/log/gomicro/db/current
   # docker exec "simple-single-old" tail -n 100 /data/var/log/elasticsearch/*.log
   [ "$status" -eq 0 ]
   # Verify
@@ -47,7 +47,7 @@ echo_lines() {
 @test "Start New ${service_name}" {
   run run_hook "simple-single-new" "start" "$(payload start)"
   echo_lines
-  docker exec "simple-single-new" tail -n 100 /var/log/gonano/db/current
+  docker exec "simple-single-new" tail -n 100 /var/log/gomicro/db/current
   [ "$status" -eq 0 ]
   # Verify
   wait_for_running "simple-single-new"

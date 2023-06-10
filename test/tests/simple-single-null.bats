@@ -22,7 +22,7 @@ echo_lines() {
 @test "Start Null ${service_name}" {
   run run_hook "simple-single-null" "start" "$(payload start-null)"
   echo_lines
-  docker exec "simple-single-null" cat /var/log/gonano/db/current
+  docker exec "simple-single-null" cat /var/log/gomicro/db/current
   docker exec "simple-single-null" ls -lha /data/etc/elasticsearch
   [ "$status" -eq 0 ]
   # Verify
@@ -31,7 +31,7 @@ echo_lines() {
 }
 
 @test "Insert Null ${service_name} Data" {
-  docker exec "simple-single-null" cat /var/log/gonano/db/current
+  docker exec "simple-single-null" cat /var/log/gomicro/db/current
   insert_test_data "simple-single-null" "192.168.0.2" ${default_port} "mykey" "data"
   verify_test_data "simple-single-null" "192.168.0.2" ${default_port} "mykey" "data"
 }
